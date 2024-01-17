@@ -1,0 +1,197 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #969992; /* Adjust the background color as needed */
+  font-family: 'Ubuntu Mono', sans-serif;
+}
+
+.card-wrapper {
+  perspective: 1000px;
+}
+
+.card {
+  width: 400px; /* Adjust width as needed */
+  display: flex;
+  flex-direction: column;
+  background: #191919; /* Adjust the background color as needed */
+  border-radius: 8px;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+  transform: rotateY(0deg);
+  transition: transform 0.5s;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: rotateY(15deg);
+}
+
+.card-top, .card-bottom {
+  padding: 0 1.2rem 1rem 1.2rem;
+}
+
+.nexaId {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.325rem;
+  color: #f5f5f5;
+}
+
+.nexaId img{
+  max-width: 1rem;
+}
+
+.character-image {
+  position: relative; /* Posicionamento relativo para os pseudo-elementos de contorno */
+  width: 100%; /* Largura do card */
+  height: 200px; /* Altura desejada para a imagem */
+  background: url('images/fotoPerfil.jpg') center/cover no-repeat;
+  border-radius: 8px; /* Cantos arredondados */
+  overflow: hidden; /* Garante que a imagem não vaze fora dos cantos arredondados */
+}
+
+.character-image::before, .character-image::after {
+  content: "";
+  position: absolute;
+  border-style: solid;
+  border-color: transparent;
+}
+
+.character-image::before {
+  top: 0;
+  left: 0;
+  border-width: 2px 0 0 2px; /* Ajuste a largura do contorno conforme necessário */
+  border-radius: 8px 0 0 0; /* Arredondamento correspondente */
+  width: 20px; /* Ajuste a extensão do contorno conforme necessário */
+  height: 20px; /* Ajuste a extensão do contorno conforme necessário */
+}
+
+.character-image::after {
+  bottom: 0;
+  right: 0;
+  border-width: 0 2px 2px 0; /* Ajuste a largura do contorno conforme necessário */
+  border-radius: 0 0 8px 0; /* Arredondamento correspondente */
+  width: 20px; /* Ajuste a extensão do contorno conforme necessário */
+  height: 20px; /* Ajuste a extensão do contorno conforme necessário */
+}
+
+
+.character-info {
+  margin: 1rem 2rem 1rem 0.325rem;
+  color: #f5f5f5;
+}
+
+.name {
+  padding-bottom: 1rem;
+}
+
+.underline-title {
+  position: relative;
+  display: inline-block;
+  /* Adicione aqui outras propriedades de estilo do título, se necessário */
+}
+
+.underline-title::after {
+  content: '';
+  position: absolute;
+  bottom: -5px; /* Ajuste a posição conforme necessário */
+  left: 50%;
+  width: 50%; /* O sublinhado cobre toda a largura do texto */
+  height: 2px; /* Altura do sublinhado */
+  background-color: #6DD708; /* Cor do sublinhado */
+}
+
+
+
+.card-bottom {
+  color: #f5f5f5;
+  background: #292828; /* Adjust the background color as needed */
+}
+
+.skill-name {
+  margin: 2rem 2rem 2rem 0;
+}
+
+.skill-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Ajuste a largura mínima como necessário */
+  gap: 1rem 2rem; /* Espaço entre os itens do grid */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skill-item {
+  display: flex;
+  align-items: center; /* Centraliza verticalmente o conteúdo do item */
+}
+
+.skill-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.3rem;
+  margin-top: 2rem;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  background-color: #6DD708; /* Adjust the color as needed */
+  color: #f5f5f5;
+}
+
+.btn:hover {
+  background-color: darken(#6DD708, 10%); /* Adjust hover effect as needed */
+}
+
+/* Add any additional styles as needed 
+.star-rating {
+  display: inline-block;
+  font-size: 0; 
+}
+
+.star {
+  display: inline-block;
+  font-size: 16px; 
+  color: #ccc; 
+  text-shadow: 0 0 1px #000; 
+  cursor: pointer;
+}
+
+.star:before {
+  content: "☆"; 
+}
+
+.star.full:before {
+  content: "★"; 
+  color: #ffcc00; 
+}
+*/
+
+
+
+.rating {
+  display: flex;
+  margin-left: auto; /* Empurra a classificação para a direita do item da habilidade */
+}
+
+.circle {
+  display: inline-block;
+  width: 10px; /* Tamanho do círculo */
+  height: 10px; /* Tamanho do círculo */
+  border: 1px solid #6DD708; /* Borda do círculo */
+  border-radius: 50%; /* Torna a forma um círculo */
+  margin: 0 2px; /* Espaçamento entre círculos */
+  background-color: transparent; /* Círculo não preenchido */
+}
+
+.circle.filled {
+  background-color: #6DD708; /* Cor de preenchimento para círculo preenchido */
+}
+
