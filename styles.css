@@ -1,12 +1,32 @@
-body, html {
+html {
   height: 100%;
+  margin: 0;
+}
+
+body {
+  position: relative;
+  min-height: 100%;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #969992; /* Adjust the background color as needed */
   font-family: 'Ubuntu Mono', sans-serif;
+  overflow: hidden; /* Oculta qualquer parte do pseudo-elemento que esteja fora dos limites */
 }
+
+body::before {
+  content: '';
+  position: absolute;
+  top: -100%; /* Expande o pseudo-elemento para cobrir a área completa, mesmo quando girado */
+  left: -100%;
+  right: -100%;
+  bottom: -100%;
+  background: url('images/Nexa Skills - Pattern.png') center/cover;
+  background-size: 60%;
+  transform: rotate(30deg); /* Gira o fundo */
+  z-index: -1; /* Coloca o fundo atrás do conteúdo do body */
+}
+
 
 .card-wrapper {
   perspective: 1000px;
@@ -18,6 +38,7 @@ body, html {
   flex-direction: column;
   background: #191919; /* Adjust the background color as needed */
   border-radius: 8px;
+  border: 1px solid #969992;
   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
   transform: rotateY(0deg);
   transition: transform 0.5s;
@@ -49,6 +70,7 @@ body, html {
   width: 100%; /* Largura do card */
   height: 200px; /* Altura desejada para a imagem */
   background: url('images/fotoPerfil.jpg') center/cover no-repeat;
+  background-position: center 35% ;
   border-radius: 8px; /* Cantos arredondados */
   overflow: hidden; /* Garante que a imagem não vaze fora dos cantos arredondados */
 }
@@ -195,3 +217,88 @@ body, html {
   background-color: #6DD708; /* Cor de preenchimento para círculo preenchido */
 }
 
+/* Responsive 480 */
+
+@media (max-width: 480px) {
+  .card {
+      width: 90%; /* Adjust the width of the card to better fit the screen */
+      margin: 0 auto; /* Center the card in the viewport */
+  }
+
+  .character-image {
+      height: 250px; /* Increase the height for a better proportion */
+  }
+
+  .skill-details {
+      grid-template-columns: repeat(2, 1fr); /* Arrange skill details in two columns */
+      gap: 15px; /* Increase the gap for better spacing */
+  }
+
+  .skill-item {
+      font-size: 1.1rem; /* Increase the font size for readability */
+  }
+
+  .rating .circle {
+      width: 12px; /* Increase the size of the rating circles */
+      height: 12px;
+  }
+
+  .title {
+      font-size: 1.5rem; /* Increase the size of the title */
+  }
+
+  .underline-title::after {
+      width: 50%; /* Make the underline wider for larger screens */
+  }
+
+}
+
+
+/* Responsive 801 */
+
+@media (max-width: 801px) {
+  .card {
+      width: 70%; /* A wider screen allows for a larger card, but not full width */
+      margin: 20px auto; /* More margin as the screen gets wider */
+      padding: 20px; /* More padding inside the card */
+  }
+
+  .character-image {
+      height: 300px; /* Larger images for larger screens */
+  }
+
+  .skill-details {
+      grid-template-columns: repeat(3, 1fr); /* Now there is space for three columns */
+      gap: 20px; /* More space between the grid items */
+  }
+
+  .skill-item {
+      font-size: 1.2rem; /* Slightly larger text for readability */
+  }
+
+  .rating .circle {
+      width: 14px; /* Larger clickable areas for the circles */
+      height: 14px;
+  }
+
+  .title {
+      font-size: 1.75rem; /* A larger title for emphasis */
+  }
+
+  .underline-title::after {
+      width: 60%; /* A longer underline for aesthetic balance */
+  }
+
+  /* You might want to add more horizontal navigation, larger headers, etc. */
+  .navigation-menu {
+      display: flex;
+      justify-content: space-between;
+  }
+
+  /* Larger buttons for interaction */
+  .button {
+      padding: 15px 30px;
+      font-size: 1rem;
+  }
+
+}
